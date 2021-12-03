@@ -8,27 +8,36 @@ import com.artushock.geekbrainspopularframeworks.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity(), MainView {
 
     private lateinit var binding: ActivityMainBinding
-    val presenter = MainPresenter(this)
+    private val presenter = MainPresenter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val listener = View.OnClickListener {
-            presenter.counterClick(it.id)
+        binding.mainActivityButton1.setOnClickListener{
+            presenter.counterClick(0)
+        }
+        binding.mainActivityButton2.setOnClickListener{
+            presenter.counterClick(1)
+        }
+        binding.mainActivityButton3.setOnClickListener{
+            presenter.counterClick(2)
         }
 
-        binding.mainActivityButton1.setOnClickListener(listener)
-        binding.mainActivityButton2.setOnClickListener(listener)
-        binding.mainActivityButton3.setOnClickListener(listener)
     }
 
-    override fun setButtonText(index: Int, text: String) {
-        when (index) {
-            0 -> binding.mainActivityButton1.text = text
-            1 -> binding.mainActivityButton2.text = text
-            2 -> binding.mainActivityButton3.text = text
-        }
+    override fun setFirstButtonText(text: String) {
+        binding.mainActivityButton1.text = text
     }
+
+    override fun setSecondButtonText(text: String) {
+        binding.mainActivityButton2.text = text
+    }
+
+    override fun setThirdButtonText(text: String) {
+        binding.mainActivityButton3.text = text
+    }
+
+
 }
