@@ -1,22 +1,22 @@
 package com.artushock.geekbrainspopularframeworks
 
-class MainPresenter(private val view: MainView) {
+import moxy.MvpPresenter
 
-    private val model = CounterModel()
+class MainPresenter(private val model: CounterModel): MvpPresenter<MainView>() {
 
     fun counterClick(id: Int) {
         when (id) {
             0 -> {
                 val nextValue = model.next(0)
-                view.setFirstButtonText(nextValue.toString())
+                viewState.setFirstButtonText(nextValue.toString())
             }
             1 -> {
                 val nextValue = model.next(1)
-                view.setSecondButtonText(nextValue.toString())
+                viewState.setSecondButtonText(nextValue.toString())
             }
             2 -> {
                 val nextValue = model.next(2)
-                view.setThirdButtonText(nextValue.toString())
+                viewState.setThirdButtonText(nextValue.toString())
             }
         }
     }
