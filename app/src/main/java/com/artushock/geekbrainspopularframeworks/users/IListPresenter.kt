@@ -1,7 +1,7 @@
 package com.artushock.geekbrainspopularframeworks.presenter
 
-import com.artushock.geekbrainspopularframeworks.view.IItemView
-import com.artushock.geekbrainspopularframeworks.view.UserItemView
+import com.artushock.geekbrainspopularframeworks.recyclerview.IItemView
+import com.artushock.geekbrainspopularframeworks.recyclerview.UserItemView
 
 interface IListPresenter<V : IItemView> {
     var itemClickListener: ((V) -> Unit)?

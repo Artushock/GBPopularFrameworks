@@ -1,4 +1,4 @@
-package com.artushock.geekbrainspopularframeworks.view
+package com.artushock.geekbrainspopularframeworks.recyclerview
 
 interface UserItemView : IItemView {
     fun setLogin(text: String)

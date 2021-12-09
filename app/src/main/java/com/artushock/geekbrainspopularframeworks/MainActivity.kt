@@ -3,8 +3,7 @@ package com.artushock.geekbrainspopularframeworks
 import android.os.Bundle
 import com.artushock.geekbrainspopularframeworks.application.App
 import com.artushock.geekbrainspopularframeworks.databinding.ActivityMainBinding
-import com.artushock.geekbrainspopularframeworks.presenter.MainPresenter
-import com.artushock.geekbrainspopularframeworks.navigation.AndroidScreens
+import com.artushock.geekbrainspopularframeworks.view.MainPresenter
 import com.artushock.geekbrainspopularframeworks.view.BackButtonListener
 import com.artushock.geekbrainspopularframeworks.view.MainView
 import com.github.terrakok.cicerone.androidx.AppNavigator
@@ -16,7 +15,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     private val navigator = AppNavigator(this, R.id.container)
 
     private val presenter by moxyPresenter {
-        MainPresenter(App.instance.router, AndroidScreens())
+        MainPresenter(App.instance.router, App.instance.screens)
     }
 
     private lateinit var binding: ActivityMainBinding

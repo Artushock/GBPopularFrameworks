@@ -1,13 +1,17 @@
-package com.artushock.geekbrainspopularframeworks.presenter
+package com.artushock.geekbrainspopularframeworks.users
 
+import com.artushock.geekbrainspopularframeworks.application.App
 import com.artushock.geekbrainspopularframeworks.model.GithubUser
 import com.artushock.geekbrainspopularframeworks.model.GithubUserRepo
-import com.artushock.geekbrainspopularframeworks.view.UserItemView
-import com.artushock.geekbrainspopularframeworks.view.UsersView
+import com.artushock.geekbrainspopularframeworks.presenter.IUserListPresenter
+import com.artushock.geekbrainspopularframeworks.recyclerview.UserItemView
 import com.github.terrakok.cicerone.Router
 import moxy.MvpPresenter
 
-class UsersPresenter(private val usersRepo: GithubUserRepo, private val router: Router) :
+class UsersPresenter(
+    private val usersRepo: GithubUserRepo,
+    private val router: Router,
+) :
     MvpPresenter<UsersView>() {
 
     class UsersListPresenter : IUserListPresenter {
@@ -30,7 +34,8 @@ class UsersPresenter(private val usersRepo: GithubUserRepo, private val router: 
         loadData()
 
         usersListPresenter.itemClickListener = { userItemView ->
-            //todo
+            val user = usersRepo.getUserByIndex(userItemView.pos)
+            router.navigateTo(App.instance.screens.user(user))
         }
     }
 
@@ -44,5 +49,4 @@ class UsersPresenter(private val usersRepo: GithubUserRepo, private val router: 
         router.exit()
         return true
     }
-
 }

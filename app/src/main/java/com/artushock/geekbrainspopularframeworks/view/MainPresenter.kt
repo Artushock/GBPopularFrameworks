@@ -1,7 +1,6 @@
-package com.artushock.geekbrainspopularframeworks.presenter
+package com.artushock.geekbrainspopularframeworks.view
 
 import com.artushock.geekbrainspopularframeworks.navigation.IScreens
-import com.artushock.geekbrainspopularframeworks.view.MainView
 import com.github.terrakok.cicerone.Router
 import moxy.MvpPresenter
 

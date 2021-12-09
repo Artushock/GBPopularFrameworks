@@ -1,4 +1,4 @@
-package com.artushock.geekbrainspopularframeworks.view
+package com.artushock.geekbrainspopularframeworks.users
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.artushock.geekbrainspopularframeworks.application.App
 import com.artushock.geekbrainspopularframeworks.databinding.FragmentUsersBinding
 import com.artushock.geekbrainspopularframeworks.model.GithubUserRepo
-import com.artushock.geekbrainspopularframeworks.presenter.UsersPresenter
+import com.artushock.geekbrainspopularframeworks.recyclerview.UserRVAdapter
+import com.artushock.geekbrainspopularframeworks.view.BackButtonListener
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 

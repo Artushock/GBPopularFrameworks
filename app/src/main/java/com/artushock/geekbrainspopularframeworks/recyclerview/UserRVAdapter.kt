@@ -1,4 +1,4 @@
-package com.artushock.geekbrainspopularframeworks.view
+package com.artushock.geekbrainspopularframeworks.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,21 +7,11 @@ import com.artushock.geekbrainspopularframeworks.databinding.LoginItemBinding
 import com.artushock.geekbrainspopularframeworks.presenter.IUserListPresenter
 
 class UserRVAdapter
-    (private val presenter: IUserListPresenter) : RecyclerView.Adapter<UserRVAdapter.ViewHolder>() {
+    (private val presenter: IUserListPresenter) : RecyclerView.Adapter<UserViewHolder>() {
 
-    inner class ViewHolder(private val vb: LoginItemBinding) : RecyclerView.ViewHolder(vb.root),
-        UserItemView {
-
-        override var pos = -1
-
-        override fun setLogin(text: String) {
-            vb.tvLogin.text = text
-        }
-
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ViewHolder(LoginItemBinding.inflate(LayoutInflater.from(parent.context),
+        UserViewHolder(LoginItemBinding.inflate(LayoutInflater.from(parent.context),
             parent,
             false)).apply {
             itemView.setOnClickListener {
@@ -29,7 +19,7 @@ class UserRVAdapter
             }
         }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         presenter.bindView(holder.apply { pos = position })
     }
 

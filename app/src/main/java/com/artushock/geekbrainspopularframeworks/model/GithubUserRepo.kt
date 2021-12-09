@@ -13,4 +13,6 @@ class GithubUserRepo {
     fun getUsers(): List<GithubUser> {
         return repositories
     }
+
+    fun getUserByIndex(index: Int) = repositories[index]
 }
