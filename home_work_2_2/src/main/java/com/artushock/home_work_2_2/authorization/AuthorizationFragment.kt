@@ -1,17 +1,14 @@
 package com.artushock.home_work_2_2.authorization
 
 import android.os.Bundle
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.Toast
 import com.artushock.home_work_2_2.databinding.FragmentAuthorizationBinding
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
-class AuthorizationFragment : MvpAppCompatFragment(), AuthorizationView{
+class AuthorizationFragment : MvpAppCompatFragment(), AuthorizationView {
 
     companion object {
         fun newInstance() = AuthorizationFragment()
@@ -27,7 +24,7 @@ class AuthorizationFragment : MvpAppCompatFragment(), AuthorizationView{
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentAuthorizationBinding.inflate(inflater, container, false)
         return binding.root
@@ -41,31 +38,28 @@ class AuthorizationFragment : MvpAppCompatFragment(), AuthorizationView{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val submitButton = binding.authFragSubmitBtn
-        val loginEditText = binding.authFragLoginEt
-        val passwordEditText = binding.authFragPasswordEt
+        with (binding){
+            authFragSignInBtn.setOnClickListener {
+                presenter.signIn(
+                    authFragLoginEt.text.toString(),
+                    authFragPasswordEt.text.toString()
+                )
+            }
 
-        submitButton.setOnClickListener {
-            presenter.setUserData(
-                loginEditText.text.toString(),
-                passwordEditText.text.toString()
-            )
+            authFragRegisterBtn.setOnClickListener {
+                presenter.register(
+                    authFragLoginEt.text.toString(),
+                    authFragPasswordEt.text.toString()
+                )
+            }
         }
     }
 
-    override fun setLoginText(login: String) {
-        binding.authFragLoginEt.setText(login)
-    }
-
-    override fun setPasswordText(password: String) {
-        binding.authFragPasswordEt.setText(password)
-    }
-
     override fun showLoginError(message: String) {
-        Toast.makeText(context, "Error: $message", Toast.LENGTH_SHORT).show()
+        binding.authFragLoginEt.error = message
     }
 
     override fun showPasswordError(message: String) {
-        Toast.makeText(context, "Error: $message", Toast.LENGTH_SHORT).show()
+        binding.authFragPasswordEt.error = message
     }
 }

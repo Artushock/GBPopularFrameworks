@@ -5,5 +5,5 @@ import com.github.terrakok.cicerone.Screen
 
 interface IScreens {
     fun authorisationScreen(): Screen
-    fun detailScreen(user: GithubUser): Screen
+    fun detailScreen(user: GithubUser, message: String): Screen
 }
