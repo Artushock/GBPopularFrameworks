@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">home_work_5</string>
+    <string name="login">Login:</string>
+    <string name="type">Type:</string>
+    <string name="sys_admin">Sys admin:</string>
+    <string name="user_avatar">User avatar</string>
+</resources>
