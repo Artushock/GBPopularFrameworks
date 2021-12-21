@@ -11,6 +11,7 @@ import moxy.ktx.moxyPresenter
 
 class DetailFragment(
     private val user: GithubUser,
+    private val message: String
 ) : MvpAppCompatFragment(), DetailView {
 
     private var _binding: FragmentDetailBinding? = null
@@ -37,10 +38,11 @@ class DetailFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.init()
+        binding.detailFragMessageTv.text = message
     }
 
     companion object {
-        fun newInstance(user: GithubUser) = DetailFragment(user)
+        fun newInstance(user: GithubUser, message: String) = DetailFragment(user, message)
     }
 
     override fun setLogin(login: String) {

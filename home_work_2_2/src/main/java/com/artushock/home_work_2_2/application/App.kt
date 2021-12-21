@@ -1,6 +1,7 @@
 package com.artushock.home_work_2_2.application
 
 import android.app.Application
+import com.artushock.home_work_2_2.data.GithubUsersRepository
 import com.artushock.home_work_2_2.navigation.AppScreens
 import com.artushock.home_work_2_2.navigation.IScreens
 import com.github.terrakok.cicerone.Cicerone
@@ -26,4 +27,8 @@ class App : Application() {
         super.onCreate()
         instance = this
     }
+
+
+    val githubUsersRepository by lazy { GithubUsersRepository() }
+
 }

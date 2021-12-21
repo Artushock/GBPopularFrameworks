@@ -11,8 +11,7 @@ class AppScreens : IScreens {
         AuthorizationFragment.newInstance()
     }
 
-    override fun detailScreen(user: GithubUser) = FragmentScreen {
-        DetailFragment.newInstance(user)
+    override fun detailScreen(user: GithubUser, message: String) = FragmentScreen {
+        DetailFragment.newInstance(user, message)
     }
-
 }
