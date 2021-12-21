@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">home_work_4</string>
+    <string name="square">Square</string>
+    <string name="enter_number">Enter number</string>
+    <string name="square_">Square:</string>
+    <string name="calculate">Calculate</string>
+    <string name="square_root">Square root:</string>
+    <string name="cube">Cube:</string>
+    <string name="cube_root">Cube root:</string>
+</resources>

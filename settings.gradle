@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 rootProject.name = "GeekBrains Popular Frameworks"
 include ':app'
 include ':home_work_2_2'
+include ':home_work_4'
