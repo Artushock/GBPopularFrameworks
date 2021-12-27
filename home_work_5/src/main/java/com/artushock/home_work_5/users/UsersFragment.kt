@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.artushock.home_work_5.application.App
 import com.artushock.home_work_5.data.GitHubUserListItem
-import com.artushock.home_work_5.data.GitHubUsersRepositoryFactory
 import com.artushock.home_work_5.databinding.FragmentUsersBinding
 import com.artushock.home_work_5.recycler.UsersAdapter
 import moxy.MvpAppCompatFragment
@@ -22,11 +22,12 @@ class UsersFragment : MvpAppCompatFragment(), UsersView, UsersAdapter.OnItemClic
     private var _binding: FragmentUsersBinding? = null
     private val binding get() = _binding!!
 
-    private val repository = GitHubUsersRepositoryFactory.create()
     private val adapter = UsersAdapter(this)
 
     private val presenter by moxyPresenter {
-        UsersPresenter(repository)
+        UsersPresenter().apply {
+            App.instance.component.inject(this)
+        }
     }
 
     override fun onCreateView(
