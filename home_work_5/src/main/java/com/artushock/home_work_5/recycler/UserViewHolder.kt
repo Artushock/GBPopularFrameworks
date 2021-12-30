@@ -4,7 +4,7 @@ import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.artushock.home_work_5.data.GitHubUserListItem
+import com.artushock.home_work_5.data.models.UserListItem
 import com.artushock.home_work_5.databinding.UserListItemBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -17,7 +17,7 @@ class UserViewHolder(private val binding: UserListItemBinding) :
 
     private val context = binding.userListItemAvatarImageView.context
 
-    fun bind(user: GitHubUserListItem, userClickListener: UsersAdapter.OnItemClickListener) {
+    fun bind(user: UserListItem, userClickListener: UsersAdapter.OnItemClickListener) {
         binding.userListItemName.text = user.login
 
         Glide.with(context)

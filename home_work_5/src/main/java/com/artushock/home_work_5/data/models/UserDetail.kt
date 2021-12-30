@@ -1,6 +1,6 @@
-package com.artushock.home_work_5.data
+package com.artushock.home_work_5.data.models
 
-data class GitHubUserDetail(
+data class UserDetail(
     val id: Int,
     val login: String,
     val url: String,

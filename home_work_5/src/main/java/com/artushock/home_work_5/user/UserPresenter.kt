@@ -1,8 +1,8 @@
 package com.artushock.home_work_5.user
 
-import com.artushock.home_work_5.data.GitHubUser
-import com.artushock.home_work_5.data.GitHubUserRepository
-import com.artushock.home_work_5.data.UserConverter
+import com.artushock.home_work_5.data.models.User
+import com.artushock.home_work_5.data.repositories.UsersRepository
+import com.artushock.home_work_5.data.repositories.UserConverter
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import moxy.MvpPresenter
@@ -13,7 +13,7 @@ class UserPresenter(
 ) : MvpPresenter<UserView>() {
 
     @Inject
-    lateinit var repository: GitHubUserRepository
+    lateinit var repository: UsersRepository
 
     @Inject
     lateinit var userConverter: UserConverter
@@ -26,7 +26,7 @@ class UserPresenter(
         repository.getUserDataByLogin(userLogin)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ user: GitHubUser ->
+            .subscribe({ user: User ->
                 viewState.showUserDetail(userConverter.convertUserToUserDetail(user))
             }, { error: Throwable ->
                 viewState.showError(error.message.toString())

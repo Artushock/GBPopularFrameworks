@@ -15,6 +15,7 @@ import javax.inject.Singleton
     NetworkModule::class,
     RepositoryModule::class,
     UserConverterModule::class,
+    UserDaoModule::class
 ])
 interface AppComponent {
 

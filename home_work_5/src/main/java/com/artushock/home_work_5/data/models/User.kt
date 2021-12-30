@@ -1,4 +1,4 @@
-package com.artushock.home_work_5.data
+package com.artushock.home_work_5.data.models
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
@@ -9,7 +9,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @Entity(tableName = "github_users_table")
-data class GitHubUser(
+data class User(
     @PrimaryKey
     @ColumnInfo(name = "id")
     @SerializedName("id")
