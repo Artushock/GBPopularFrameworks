@@ -8,6 +8,6 @@ import dagger.Provides
 class UserDaoModule {
 
     @Provides
-    fun provideGitHubUserDao(db: MainDataBase) = db.getGitHubUserDao()
+    fun provideUserDao(db: MainDataBase) = db.getUserDao()
 
 }
