@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class UsersRepositoryImpl
 @Inject constructor(
-    private val gitHubApi: GitHubApi,
+    private val api: GitHubApi,
     private val dao: UserDao,
 ) : UsersRepository {
 
@@ -17,7 +17,7 @@ class UsersRepositoryImpl
         return dao.getUsers()
             .flatMap {
                 if (it.isEmpty()) {
-                    gitHubApi.fetchUsers()
+                    api.fetchUsers()
                         .map { resultFromServer ->
                             dao.saveUser(resultFromServer)
                             resultFromServer

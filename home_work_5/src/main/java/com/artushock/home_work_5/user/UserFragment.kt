@@ -23,8 +23,9 @@ class UserFragment(login: String) : MvpAppCompatFragment(), UserView {
     private val binding get() = _binding!!
 
     private val presenter by moxyPresenter {
-        UserPresenter(login).apply {
-            App.instance.component.inject(this)
+        UserPresenter().apply {
+            init(login)
+            App.instance.component.provideUserFragmentComponent().build().inject(this)
         }
     }
 

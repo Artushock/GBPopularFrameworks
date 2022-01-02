@@ -2,22 +2,17 @@ package com.artushock.home_work_5.di
 
 import android.content.Context
 import com.artushock.home_work_5.MainActivity
-import com.artushock.home_work_5.user.UserPresenter
+import com.artushock.home_work_5.user.di.UserFragmentComponent
 import com.artushock.home_work_5.users.UsersPresenter
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [
-    CiceroneModule::class,
-    DataBaseModule::class,
-    NetworkModule::class,
-    RepositoryModule::class,
-    UserConverterModule::class,
-    UserDaoModule::class
-])
+@Component(modules = [AppModule::class])
 interface AppComponent {
+
+    fun provideUserFragmentComponent(): UserFragmentComponent.Builder
 
     @Component.Builder
     interface Builder {
@@ -29,6 +24,5 @@ interface AppComponent {
     }
 
     fun inject(mainActivity: MainActivity)
-    fun inject(userPresenter: UserPresenter)
     fun inject(usersPresenter: UsersPresenter)
 }
