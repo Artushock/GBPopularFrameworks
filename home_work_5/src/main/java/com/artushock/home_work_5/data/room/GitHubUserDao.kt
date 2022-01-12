@@ -21,5 +21,4 @@ interface GitHubUserDao {
 
     @Insert(onConflict = REPLACE)
     fun saveUser (users: List<GitHubUser>)
-
 }
