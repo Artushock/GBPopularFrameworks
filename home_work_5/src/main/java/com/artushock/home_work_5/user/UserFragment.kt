@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.artushock.home_work_5.application.App
-import com.artushock.home_work_5.data.GitHubUserDetail
+import com.artushock.home_work_5.data.models.UserDetail
 import com.artushock.home_work_5.databinding.FragmentUserBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -23,8 +23,9 @@ class UserFragment(login: String) : MvpAppCompatFragment(), UserView {
     private val binding get() = _binding!!
 
     private val presenter by moxyPresenter {
-        UserPresenter(login).apply {
-            App.instance.component.inject(this)
+        UserPresenter().apply {
+            init(login)
+            App.instance.component.provideUserFragmentComponent().build().inject(this)
         }
     }
 
@@ -47,7 +48,7 @@ class UserFragment(login: String) : MvpAppCompatFragment(), UserView {
             UserFragment(login)
     }
 
-    override fun showUserDetail(user: GitHubUserDetail) {
+    override fun showUserDetail(user: UserDetail) {
         binding.fragmentUserLoginTextView.text = user.login
         binding.fragmentUserTypeTextView.text = user.type
         binding.fragmentUserSysAdminTextView.text = user.sysAdmin.toString()

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.artushock.home_work_5.application.App
-import com.artushock.home_work_5.data.GitHubUserListItem
+import com.artushock.home_work_5.data.models.UserListItem
 import com.artushock.home_work_5.databinding.FragmentUsersBinding
 import com.artushock.home_work_5.recycler.UsersAdapter
 import moxy.MvpAppCompatFragment
@@ -54,7 +54,7 @@ class UsersFragment : MvpAppCompatFragment(), UsersView, UsersAdapter.OnItemClic
         _binding = null
     }
 
-    override fun showUsers(users: List<GitHubUserListItem>) {
+    override fun showUsers(users: List<UserListItem>) {
         adapter.setUsers(users)
     }
 
@@ -62,7 +62,7 @@ class UsersFragment : MvpAppCompatFragment(), UsersView, UsersAdapter.OnItemClic
         Toast.makeText(context, "Error: $message", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onUserClick(user: GitHubUserListItem) {
+    override fun onUserClick(user: UserListItem) {
         presenter.showUserFragment(user.login)
     }
 }

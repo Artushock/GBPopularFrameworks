@@ -1,11 +1,11 @@
 package com.artushock.home_work_5.recycler
 
 import androidx.recyclerview.widget.DiffUtil
-import com.artushock.home_work_5.data.GitHubUserListItem
+import com.artushock.home_work_5.data.models.UserListItem
 
 class DiffUtilsCallBack(
-    private val oldUsersList: List<GitHubUserListItem>,
-    private val newUsersList: List<GitHubUserListItem>,
+    private val oldUsersList: List<UserListItem>,
+    private val newUsersList: List<UserListItem>,
 ) : DiffUtil.Callback() {
 
     override fun getOldListSize() = oldUsersList.size

@@ -4,13 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.artushock.home_work_5.data.GitHubUserListItem
+import com.artushock.home_work_5.data.models.UserListItem
 import com.artushock.home_work_5.databinding.UserListItemBinding
 
 class UsersAdapter(private val userClickListener: OnItemClickListener) :
     RecyclerView.Adapter<UserViewHolder>() {
 
-    private var users = ArrayList<GitHubUserListItem>()
+    private var users = ArrayList<UserListItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val binding =
@@ -24,7 +24,7 @@ class UsersAdapter(private val userClickListener: OnItemClickListener) :
 
     override fun getItemCount() = users.size
 
-    fun setUsers(newUsers: List<GitHubUserListItem>) {
+    fun setUsers(newUsers: List<UserListItem>) {
         val diffUtilsCallBack = DiffUtilsCallBack(users, newUsers)
         val diffResult = DiffUtil.calculateDiff(diffUtilsCallBack)
         users.clear()
@@ -33,6 +33,6 @@ class UsersAdapter(private val userClickListener: OnItemClickListener) :
     }
 
     interface OnItemClickListener {
-        fun onUserClick(user: GitHubUserListItem)
+        fun onUserClick(user: UserListItem)
     }
 }

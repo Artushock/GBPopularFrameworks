@@ -1,7 +1,7 @@
 package com.artushock.home_work_5.users
 
-import com.artushock.home_work_5.data.GitHubUserRepository
-import com.artushock.home_work_5.data.UserConverter
+import com.artushock.home_work_5.data.repositories.UsersRepository
+import com.artushock.home_work_5.data.repositories.UserConverter
 import com.artushock.home_work_5.user.UserScreen
 import com.github.terrakok.cicerone.Router
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -16,7 +16,7 @@ class UsersPresenter :
     lateinit var router: Router
 
     @Inject
-    lateinit var repository: GitHubUserRepository
+    lateinit var repository: UsersRepository
 
     @Inject
     lateinit var userConverter: UserConverter
