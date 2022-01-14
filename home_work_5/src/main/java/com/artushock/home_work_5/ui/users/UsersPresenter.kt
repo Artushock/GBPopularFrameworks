@@ -1,8 +1,8 @@
-package com.artushock.home_work_5.users
+package com.artushock.home_work_5.ui.users
 
 import com.artushock.home_work_5.data.repositories.UsersRepository
 import com.artushock.home_work_5.data.repositories.UserConverter
-import com.artushock.home_work_5.user.UserScreen
+import com.artushock.home_work_5.ui.user.UserScreen
 import com.github.terrakok.cicerone.Router
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -30,14 +30,16 @@ class UsersPresenter :
         router.navigateTo(UserScreen(login))
     }
 
-    private fun updateUsersList() {
+    fun updateUsersList() {
+        viewState.displayProgress(true)
         repository.getUsers()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+            .doFinally { viewState.displayProgress(false) }
             .subscribe({ usersList ->
                 viewState.showUsers(userConverter.convertUserListToUserItemList(usersList))
             }, { error: Throwable ->
-                viewState.showError(error.message.toString())
+                viewState.showError(error.message.toString(), true)
             })
     }
 }

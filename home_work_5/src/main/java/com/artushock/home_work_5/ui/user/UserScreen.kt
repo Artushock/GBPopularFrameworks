@@ -1,4 +1,4 @@
-package com.artushock.home_work_5.user
+package com.artushock.home_work_5.ui.user
 
 import androidx.fragment.app.FragmentFactory
 import com.github.terrakok.cicerone.androidx.FragmentScreen

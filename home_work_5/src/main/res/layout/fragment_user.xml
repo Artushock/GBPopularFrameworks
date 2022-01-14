@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
-    tools:context=".user.UserFragment">
+    tools:context=".ui.user.UserFragment">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -21,13 +21,14 @@
 
         <ProgressBar
             android:id="@+id/fragment_user_avatar_progress_bar"
-            android:layout_width="100dp"
+            android:layout_width="99dp"
             android:layout_height="100dp"
             android:layout_gravity="center" />
 
     </FrameLayout>
 
     <TableLayout
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
@@ -95,4 +96,48 @@
 
     </TableLayout>
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/user_fragment_error_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/user_fragment_error_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:padding="16dp"
+            tools:text="Error" />
+
+        <Button
+            android:id="@+id/user_fragment_try_again_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/user_fragment_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/white" />
+
+    </FrameLayout>
+
+</FrameLayout>

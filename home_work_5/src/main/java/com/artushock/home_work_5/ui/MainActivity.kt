@@ -1,9 +1,10 @@
-package com.artushock.home_work_5
+package com.artushock.home_work_5.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.artushock.home_work_5.R
 import com.artushock.home_work_5.application.App
-import com.artushock.home_work_5.users.UsersScreen
+import com.artushock.home_work_5.ui.users.UsersScreen
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator

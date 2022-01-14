@@ -1,4 +1,4 @@
-package com.artushock.home_work_5.users
+package com.artushock.home_work_5.ui.users
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory

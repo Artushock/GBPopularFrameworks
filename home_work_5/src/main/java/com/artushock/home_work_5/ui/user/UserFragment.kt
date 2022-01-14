@@ -1,4 +1,4 @@
-package com.artushock.home_work_5.user
+package com.artushock.home_work_5.ui.user
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -9,15 +9,15 @@ import android.widget.Toast
 import com.artushock.home_work_5.application.App
 import com.artushock.home_work_5.data.models.UserDetail
 import com.artushock.home_work_5.databinding.FragmentUserBinding
+import com.artushock.home_work_5.ui.BaseFragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
-class UserFragment(login: String) : MvpAppCompatFragment(), UserView {
+class UserFragment(login: String) : BaseFragment(), UserView {
 
     private var _binding: FragmentUserBinding? = null
     private val binding get() = _binding!!
@@ -28,7 +28,6 @@ class UserFragment(login: String) : MvpAppCompatFragment(), UserView {
             App.instance.component.provideUserFragmentComponent().build().inject(this)
         }
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,8 +60,18 @@ class UserFragment(login: String) : MvpAppCompatFragment(), UserView {
         }
     }
 
-    override fun showError(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    override fun showError(message: String, tumbler: Boolean) {
+        changeViewVisibility(binding.userFragmentErrorContainer, tumbler)
+        if (tumbler) {
+            binding.userFragmentErrorMessage.text = message
+            binding.userFragmentTryAgainButton.setOnClickListener {
+                presenter.router.exit()
+            }
+        }
+    }
+
+    override fun displayProgress(tumbler: Boolean) {
+        changeViewVisibility(binding.userFragmentProgressBar, tumbler)
     }
 
     private fun getGlideListener() = object : RequestListener<Drawable> {

@@ -4,4 +4,6 @@
     <string name="type">Type:</string>
     <string name="sys_admin">Sys admin:</string>
     <string name="user_avatar">User avatar</string>
+    <string name="back">Back</string>
+    <string name="try_again">Try again</string>
 </resources>
