@@ -1,19 +1,18 @@
-package com.artushock.home_work_5.users
+package com.artushock.home_work_5.ui.users
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.artushock.home_work_5.application.App
 import com.artushock.home_work_5.data.models.UserListItem
 import com.artushock.home_work_5.databinding.FragmentUsersBinding
 import com.artushock.home_work_5.recycler.UsersAdapter
-import moxy.MvpAppCompatFragment
+import com.artushock.home_work_5.ui.BaseFragment
 import moxy.ktx.moxyPresenter
 
-class UsersFragment : MvpAppCompatFragment(), UsersView, UsersAdapter.OnItemClickListener {
+class UsersFragment : BaseFragment(), UsersView, UsersAdapter.OnItemClickListener {
 
     companion object {
         fun newInstance() = UsersFragment()
@@ -55,14 +54,32 @@ class UsersFragment : MvpAppCompatFragment(), UsersView, UsersAdapter.OnItemClic
     }
 
     override fun showUsers(users: List<UserListItem>) {
+        hideAll()
         adapter.setUsers(users)
     }
 
-    override fun showError(message: String) {
-        Toast.makeText(context, "Error: $message", Toast.LENGTH_SHORT).show()
+    override fun showError(message: String, tumbler: Boolean) {
+        changeViewVisibility(binding.usersFragmentErrorContainer, tumbler)
+        if (tumbler) {
+            binding.usersFragmentErrorMessage.text = message
+            binding.usersFragmentTryAgainButton.setOnClickListener {
+                hideAll()
+                displayProgress(true)
+                presenter.updateUsersList()
+            }
+        }
+    }
+
+    override fun displayProgress(tumbler: Boolean) {
+        changeViewVisibility(binding.usersFragmentProgressBar, tumbler)
     }
 
     override fun onUserClick(user: UserListItem) {
         presenter.showUserFragment(user.login)
+    }
+
+    private fun hideAll(){
+        changeViewVisibility(binding.usersFragmentErrorContainer, false)
+        changeViewVisibility(binding.usersFragmentProgressBar, false)
     }
 }

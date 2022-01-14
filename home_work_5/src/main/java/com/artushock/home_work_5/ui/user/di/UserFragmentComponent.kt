@@ -1,6 +1,6 @@
-package com.artushock.home_work_5.user.di
+package com.artushock.home_work_5.ui.user.di
 
-import com.artushock.home_work_5.user.UserPresenter
+import com.artushock.home_work_5.ui.user.UserPresenter
 import dagger.Subcomponent
 import javax.inject.Scope
 

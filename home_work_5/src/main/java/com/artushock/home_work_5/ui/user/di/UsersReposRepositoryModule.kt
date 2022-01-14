@@ -1,4 +1,4 @@
-package com.artushock.home_work_5.user.di
+package com.artushock.home_work_5.ui.user.di
 
 import com.artushock.home_work_5.data.repositories.UsersReposRepository
 import com.artushock.home_work_5.data.repositories.UsersReposRepositoryImpl

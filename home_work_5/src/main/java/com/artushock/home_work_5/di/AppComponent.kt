@@ -1,9 +1,9 @@
 package com.artushock.home_work_5.di
 
 import android.content.Context
-import com.artushock.home_work_5.MainActivity
-import com.artushock.home_work_5.user.di.UserFragmentComponent
-import com.artushock.home_work_5.users.UsersPresenter
+import com.artushock.home_work_5.ui.MainActivity
+import com.artushock.home_work_5.ui.user.di.UserFragmentComponent
+import com.artushock.home_work_5.ui.users.UsersPresenter
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
